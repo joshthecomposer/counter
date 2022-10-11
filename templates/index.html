@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Counter</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Counter</h1>
+        <h2 class="text-center">{{session['count']}}</h2>
+        <div class="row justify-content-center mb-3">
+            <div class="col-1 text-center">
+                <a href="/count" class="btn btn-primary">Plus 1</a>   
+            </div>
+            <div class="col-1 text-center">
+                {%if 'custom_number' not in session: %}
+                    <a href="/count2" class="btn btn-primary">Plus 2</a>
+                {%else%}
+                    <a href="/count2" class="btn btn-primary">Plus {{session['custom_number']}}</a>
+                {%endif%}
+            </div>
+            <div class="col-1 text-center">
+                <a href="/clear" class="btn btn-secondary">Clear</a>
+            </div>
+        </div>     
+        <div class="row justify-content-center">
+            <div class="col-3 text-center">
+                <form action="/custom" method="post">
+                    <input type="number" class="form-control" placeholder="Input a number and hit enter" name="custom_number">
+                </form>
+            </div>
+        </div>     
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
